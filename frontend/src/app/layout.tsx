@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
         <Header></Header>
-        <Container>{children}</Container>
+        <Container style={{marginBottom: 180}}>{children}</Container>
       </body>
     </html>
   )

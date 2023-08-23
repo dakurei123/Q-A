@@ -5,6 +5,7 @@ module.exports = {
   nextConfig,
   reactStrictMode: true,
   env: {
-    API_URL: process.env.API_URL,
+    API_AUTH_URL: process.env.API_AUTH_URL,
+    API_NOTIFICATION_URL: process.env.API_NOTIFICATION_URL,
   }
 }

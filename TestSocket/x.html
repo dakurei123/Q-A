@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id='btn'>Change room</button>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script>
+    var stompClient = null;
+    var username = null;
+    var button = document.querySelector('#btn')
+    var s = false
+
+    var socket = new SockJS('http://localhost:8081/ws');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, onConnected, onError);
+
+
+    function onConnected() {
+        stompClient.subscribe('/notification/xxx', onMessageReceived);
+    }
+
+    button.addEventListener('click', () => {
+        if (s === false) {
+            stompClient.unsubscribe()
+            stompClient.subscribe('/notification/yyy', onMessageReceived);
+        }
+        else {
+            stompClient.unsubscribe()
+            stompClient.subscribe('/notification/xxx', onMessageReceived);
+        }
+        s = !s
+
+    })
+
+    function onError(error) {
+        console.log('Could not connect to WebSocket server. Please refresh this page to try again!');
+    }
+
+    function onMessageReceived(payload) {
+        console.log(payload)
+    }
+
+    Notification.requestPermission(function (status) {
+        console.log('Notification permission status:', status);
+    });
+</script>
+
+</html>

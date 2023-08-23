@@ -4,14 +4,14 @@ import { useRouter } from 'next/router';
 import queryString from 'query-string';
 
 const axiosClient = axios.create({
-    baseURL: process.env.API_URL,
+    baseURL: process.env.API_AUTH_URL,
     headers: {
         'content-type': 'application/json',
     },
     paramsSerializer: params => queryString.stringify(params),
 });
 axiosClient.interceptors.request.use(async (config) => {
-    config.withCredentials = true
+    // config.withCredentials = true
     return config;
 })
 axiosClient.interceptors.response.use(async (response) => {
@@ -37,11 +37,3 @@ axiosClient.interceptors.response.use(async (response) => {
     return Promise.reject(error);
 });
 export default axiosClient;
-
-function parseError(data: any): any {
-    throw new Error('Function not implemented.');
-}
-function isNetworkError(error: any) {
-    throw new Error('Function not implemented.');
-}
-

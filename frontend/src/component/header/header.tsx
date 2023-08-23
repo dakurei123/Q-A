@@ -17,7 +17,7 @@ function Header() {
     <Navbar bg="light" expand="lg" style={{ background: "linear-gradient(to right, #7f7fd5, #23709E)", marginBottom: 30 }}>
       <Container>
         <Navbar.Brand href="/">
-          <Image src='logo2.png' width={60} height={60}></Image>
+          <Image src='/logo2.png' width={60} height={60}></Image>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -26,7 +26,10 @@ function Header() {
               <Link href="/" className={path === '/' ? 'nav-link active' : 'nav-link'} style={{ color: '#fff', marginLeft: 10 }}>Hỏi & Đáp</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link href="/admin" className={path === '/admin' ? 'nav-link active' : 'nav-link'} style={{ color: '#fff', marginLeft: 10 }}>Chia sẻ kiến thức</Link>
+              <Link href="/posts" className={path === '/posts' ? 'nav-link active' : 'nav-link'} style={{ color: '#fff', marginLeft: 10 }}>Chia sẻ kiến thức</Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link href="/post/create" className={path === '/post/create' ? 'nav-link active' : 'nav-link'} style={{ color: '#fff', marginLeft: 10 }}>Đăng bài || Câu hỏi</Link>
             </Nav.Item>
           </Nav>
           <Form className="d-flex">
