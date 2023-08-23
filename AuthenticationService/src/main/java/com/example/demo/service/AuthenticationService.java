@@ -45,6 +45,7 @@ public class AuthenticationService {
             }
             throw new ApiException(ErrorMessage.USER_NOT_FOUND, dto.getEmail() + " " + (user != null ? user.getCountLoginFail() + 1 : 0));
         }
+
         userRepository.resetCountLogin(user.getId());
         TokenResponse tokenResponse = setCookieToken(user, response);
         UserResponseDto responseDto = ConvertUtils.convert(user, UserResponseDto.class);
